@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        .slider{
+            margin: 100px;
+            text-align: center;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <img src="luffy.jpg" id="display-img">
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+    </div>
+
+    <script>
+        let images = ["luffy.jpg", "zoro.jpg", "sanji.jpg"];
+        let currentIndex = 0;
+        let display = document.getElementById("display-img");
+        let prevBtn = document.getElementById("prevBtn");
+        let nextBtn = document.getElementById("nextBtn");
+        nextBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            display.src = images[currentIndex];  
+        });
+        prevBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            display.src = images[currentIndex];  
+        });
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            display.src = images[currentIndex]; 
+        }, 2000);
+    </script>
+</body>
+</html>
